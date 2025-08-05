@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# database/database_handler.py
+
+
 import sqlite3
 import os
 
@@ -22,8 +26,7 @@ def init_db():
     table_exists = cursor.fetchone()
     
     if not table_exists:
-        with open(schema_file, 'r') as f:
-            conn.executescript(f.read())
+        with open(schema_file, 'r', encoding='utf-8') as f:            conn.executescript(f.read())
         conn.commit()
         print("Banco de dados criado com sucesso.")
     else:
